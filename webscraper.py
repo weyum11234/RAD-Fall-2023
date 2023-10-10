@@ -3,24 +3,34 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import requests
 
-driver = webdriver.Chrome()
-driver.get('https://tunebat.com/Analyzer')
+def main():
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36')
 
-driver.implicitly_wait(0.5)
+    driver = webdriver.Chrome(options=options)
+    driver.get('https://tunebat.com/Analyzer')
 
-search_box = driver.find_element(By.TAG_NAME, 'input')
-search_btn = driver.find_element(By.TAG_NAME, 'button')
+    driver.implicitly_wait(0.5)
 
-search_box.send_keys(input('Enter name of song: '))
-search_btn.click()
+    search_box = driver.find_element(By.TAG_NAME, 'input')
+    search_btn = driver.find_element(By.TAG_NAME, 'button')
 
-driver.implicitly_wait(10)
 
-bpm_result = driver.find_elements(By.TAG_NAME, 'p')
-bpm_value = int(bpm_result[2].text)
+    search_box.send_keys(input('Enter name of song: '))
+    search_btn.click()
 
-print('BPM is', bpm_value)
+    driver.implicitly_wait(1)
 
-r = requests.post('http://172.19.0.170/led', json={"bpm": bpm_value,})
+    bpm_result = driver.find_elements(By.TAG_NAME, 'p')
+    bpm_value = int(bpm_result[2].text)
 
-driver.quit()
+    print('BPM is', bpm_value)
+
+    r = requests.post('http://172.19.0.170/led', json={"bpm": bpm_value,})
+
+    driver.quit()
+
+    return
+
+main()
