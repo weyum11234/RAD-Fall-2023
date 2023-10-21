@@ -1,0 +1,34 @@
+/* Apply styles to all <p> elements */
+p {
+    color: rgb(0, 0, 0);
+}
+
+/* Apply styles to the entire <body> element */
+body {
+    background-color: rgb(255, 255, 255);
+    margin: 1000;
+    width: 640px;
+    padding: 50px;
+    font-family: 'Avenir', sans-serif;
+    color: #000000;
+    text-align: center;
+}
+
+/* Apply styles to all <img> elements */
+
+/* Apply styles to all <h1> elements */
+h1 {
+    text-align: center;
+}
+img {
+    margin-right: 10px;
+}
+
+/* Apply styles to elements with the class "text" */
+.text {
+    color: rgb(0, 0, 0);
+}
+/* Apply styles to all <p> elements */
+p {
+    color: rgb(0, 0, 0);
+}
