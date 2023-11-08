@@ -11,7 +11,7 @@ def main():
     driver = webdriver.Chrome(options=options)
     driver.get('https://tunebat.com/Analyzer')
 
-    driver.implicitly_wait(0.5)
+    driver.implicitly_wait(1)
 
     search_box = driver.find_element(By.TAG_NAME, 'input')
     search_btn = driver.find_element(By.TAG_NAME, 'button')
